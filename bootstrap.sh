@@ -20,7 +20,7 @@ else
 fi
 unset doIt
 
-echo -e "\n[ -f ~/.bashrc.$(whoami) ] && source ~/.bashrc.$(whoami)" >>~/.bashrc
+echo -e '\n[ -f ~/.bashrc.$(whoami) ] && source ~/.bashrc.$(whoami)' >>~/.bashrc
 
 # Vim config
 git clone https://github.com/eas/dotvim.git ~/.vim

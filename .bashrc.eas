@@ -24,7 +24,7 @@ function ps_my()
     tput_magenta=$(tput setaf 5) # Magenta
     tput_cyan=$(tput setaf 6)    # Cyan
     tput_white=$(tput setaf 7)   # White
-        PS1='${debian_chroot:+($debian_chroot)}${tput_bold}${tput_green}\u@\h${tput_rst}:${tput_bold}${tput_blue}\w${tput_rst}\$ '
+        PS1='${debian_chroot:+($debian_chroot)}\[${tput_bold}\]\[${tput_green}\]\u@\h\[${tput_rst}\]:\[${tput_bold}\]\[${tput_blue}\]\w\[${tput_rst}\]\$ '
     else
         PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
     fi
