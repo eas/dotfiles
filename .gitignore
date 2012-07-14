@@ -1,0 +1,8 @@
+*.swp
+*~
+tags
+*.out
+*tmp
+*.o
+*.pyc
+latest.tar

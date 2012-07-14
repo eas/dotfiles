@@ -1,0 +1,49 @@
+export EDITOR=vim
+export PAGER=less
+
+function ps_my()
+{
+    if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
+    # We have color support; assume it's compliant with Ecma-48
+    # (ISO/IEC-6429). (Lack of such support is extremely rare, and such
+    # a case would tend to support setf rather than setaf.)
+    color_prompt=yes
+    else
+    color_prompt=
+    fi
+
+    if [ "$color_prompt" = yes ]; then
+    tput_und=$(tput sgr 0 1)    # Underline
+    tput_bold=$(tput bold)       # Bold
+    tput_rst=$(tput sgr0)       # Reset
+    tput_black=$(tput setaf 0)   # Black
+    tput_red=$(tput setaf 1)     # Red
+    tput_green=$(tput setaf 2)   # Green
+    tput_yellow=$(tput setaf 3)  # Yellow
+    tput_blue=$(tput setaf 4)    # Blue
+    tput_magenta=$(tput setaf 5) # Magenta
+    tput_cyan=$(tput setaf 6)    # Cyan
+    tput_white=$(tput setaf 7)   # White
+        PS1='${debian_chroot:+($debian_chroot)}${tput_bold}${tput_green}\u@\h${tput_rst}:${tput_bold}${tput_blue}\w${tput_rst}\$ '
+    else
+        PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+    fi
+    unset color_prompt force_color_prompt
+}
+
+ps_my
+
+export HISTIGNORE="&:cd:[fb]g:ls:\.\.:\.\.\.: *"
+PROMPT_COMMAND='history -a'
+
+if [ -f ~/.inputrc ]; then
+    export INPUTRC=~/.inputrc
+fi
+
+shopt -s autocd
+shopt -s cdspell
+shopt -s dirspell
+shopt -s histappend
+shopt -s globstar
+
+[ -f ~/.aliases ] && source ~/.aliases
